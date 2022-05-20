@@ -47,7 +47,7 @@ module.exports = function(RED) {
                return;
             }
 
-            var url = "https://platform.clickatell.com/messages/http/send?apiKey="+n.api_key+"&to="+number+"&text="+encodeURIComponent(text);
+            var url = "https://platform.clickatell.com/messages/http/send?apiKey="+n.api_key+"&to="+number+"&content="+encodeURIComponent(text);
             if (DEBUG){
                 console.log("Clickatel : "+number+" & sms : "+text);
             }
