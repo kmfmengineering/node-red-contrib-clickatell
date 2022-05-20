@@ -5,6 +5,11 @@
     </div>
 
     <div class="form-row">
+        <label for="from_num"><i class="from_num"></i> Override from number</label>
+        <input type="text" id="node-input-from_num" placeholder="Override from mobile number">
+    </div>
+
+    <div class="form-row">
         <label for="mobile_default" title="Can be entered as topic"><i class="mobile_default"></i> Mobile No.</label>
         <input type="text" id="node-input-mobile_default" placeholder="Mobile Number" maxlength="12">
     </div>
@@ -32,6 +37,7 @@
         icon: "clickatell.png",
         defaults: {             // defines the editable properties of the node
             api_key: {value:"", required:true},
+            from_num: {value:"", required:false},
             mobile_default: {value:"", required:false},
             sms_default: {value:"", required:false}
         },
