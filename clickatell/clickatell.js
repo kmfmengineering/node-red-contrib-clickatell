@@ -2,7 +2,7 @@
 
 module.exports = function(RED) {
     "use strict";
-    
+
     var DEBUG   = true;
     var MAXLEN  = 160;
     var request = require('request');
@@ -28,7 +28,7 @@ module.exports = function(RED) {
                                }
                            );
             }
-           
+
             // Function for http get
             function http_get(req_url){
                            request.get(
@@ -53,9 +53,6 @@ module.exports = function(RED) {
 
         RED.nodes.createNode(this, n);
 
-        var bal_query   = "http://api.clickatell.com/http/getbalance?api_id="+n.api_id+"&user="+n.username+"&password="+n.password;
-        this.sms_default = n.sms_default;
-        this.mobile_default = n.mobile_default;
         this.sms_default = n.sms_default;
         this.mobile_default = n.mobile_default;
 
@@ -67,18 +64,19 @@ module.exports = function(RED) {
                 node.warn("Destination Number: contains invalid characters. Please enter a valid mobile number");
                 return;
             }
-            
+
             if (text.length > MAXLEN) {
                node.warn("Message length is: " + text.length + ", which exceeds the max SMS message length ("+MAXLEN+") by : " + (text.length - MAXLEN));
-               return; 
-            } 
+               return;
+            }
 
-            var url = "http://api.clickatell.com/http/sendmsg?user="+n.username+"&password="+n.password+"&api_id="+n.api_id+"&to="+number+"&text="+encodeURIComponent(text);
+            var url = "https://platform.clickatell.com/messages/http/send?apiKey="+n.api_key+"&to="+number+"&text="+encodeURIComponent(text);
             if (DEBUG){
                 console.log("Clickatel : "+number+" & sms : "+text);
             }
             http_post(url);
-//            http_get(bal_query);
+            // We do not need a response from Clickatell
+            // http_get(bal_query);
         });
 
     }
