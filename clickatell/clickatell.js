@@ -5,7 +5,6 @@ module.exports = function(RED) {
 
     var DEBUG   = true;
     var MAXLEN  = 160;
-    var request = require('request');
 
     function ClickatellNode(n) {
         // Send SMS to Clickatell
