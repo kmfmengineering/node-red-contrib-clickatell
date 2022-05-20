@@ -13,39 +13,15 @@ module.exports = function(RED) {
             // Helper functions
             // Function for http post
             function http_post(req_url){
-                           request.post(
-                               req_url,
-                               function(error, response, body) {
-                                   console.log("Clickatell POST:")
-                                   console.log(req_url);
-                                   console.log(body);
-                                   if (!error && response.statusCode == 200) {
-                                       node.send({topic:"Clickatell POST:",payload:body});
-                                   } else {
-                                       console.log(error);
-                                       node.send({topic:"Clickatell ERROR:",payload:error});
-				}
-                               }
-                           );
-            }
+                           var xhr = new XMLHttpRequest();
+                           xhr.open("GET", req_url, true);
+                            xhr.onreadystatechange = function(){
+                                if (xhr.readyState == 4 && xhr.status == 200) {
+                                    console.log('success');
+                                }
+                            };
 
-            // Function for http get
-            function http_get(req_url){
-                           request.get(
-                               bal_query,
-                               function(error, response, body) {
-                                   console.log("Clickatell GET:")
-                                   node.send("Clickatell GET:");
-                                   if (!error && response.statusCode == 200) {
-                                    if (DEBUG){
-                                       console.log(body, response)
-                                    }
-                                    console.log(req_url)
-                                    console.log(body)
-                                    node.send(body);
-                                   }
-                               }
-                           );
+                            xhr.send();
             }
 
         var node = this;

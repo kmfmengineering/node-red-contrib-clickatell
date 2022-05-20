@@ -3,7 +3,6 @@
     "description": "SMS output node using Clickatell API",
     "version": "0.1.4",
     "dependencies": {
-        "request": "~2.42.0"
     },
     "keywords": [ "node-red","sms","clickatell" ],
     "node-red" :{
