@@ -49,7 +49,8 @@ module.exports = function(RED) {
 
             var url = "https://platform.clickatell.com/messages/http/send?apiKey="+n.api_key+"&to="+number+"&content="+encodeURIComponent(text);
             if (DEBUG){
-                console.log("Clickatel : "+number+" & sms : "+text);
+                console.log("Clickatell : "+number+" & sms : "+text);
+                console.log(url);
             }
             http_post(url);
             // We do not need a response from Clickatell
