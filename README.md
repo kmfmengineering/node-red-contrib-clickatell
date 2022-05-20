@@ -2,6 +2,6 @@
 
 SMS Integration into node-red using <a href="http://www.clickatell.com">Clickatell</a>
 
-Sponsored by <a href="http://agsense.co.nz">AgSense - Farm Monitoring Systems </a>
+Sponsored by <a href="https://kmfm.co.uk">kmfm Engineering</a>
 
 
